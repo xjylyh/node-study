@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+    用户：<input type="text" id='username'>
+    密码：<input type="password" id='pass'>
+    <input type="button" id="reg" value='注册'><input type="button" id="login" value='登录'>
+</body>
+<script src="./jquery-1.7.2.min.js"></script>
+<script>
+    $(function(){
+        var username = document.getElementById('username');
+        var password = document.getElementById('pass');
+        var reg = document.getElementById('reg');
+        var login = document.getElementById('login');
+        $('#reg').on('click',function(){
+            console.log('???');
+            $.ajax({
+                url:'/user',
+                type:'get',
+                data:{type:'reg',username:username.value,password:password.value},
+                datatype:'json',
+                success:function(result){
+                    result = JSON.parse(result);
+                    if(result.r){
+                        alert(result.msg);
+                    }else{
+                        alert('注册失败：'+result.msg);
+                    }
+                },
+                error:function(){
+                    alert('通信异常');
+                }
+            })
+        })
+        login.onclick=function(){
+            $.ajax({
+                url:'/user',
+                type:'get',
+                data:{type:'login',username:username.value,password:password.value},
+                datatype:'json',
+                success:function(result){
+                    result = JSON.parse(result);
+                    if(result.r){
+                        alert(result.msg);
+                    }else{
+                        alert('登录失败：'+result.msg);
+                    }
+                },
+                error:function(){
+                    alert('通信异常');
+                }
+            })
+        }
+    })
+</script>
+</html>

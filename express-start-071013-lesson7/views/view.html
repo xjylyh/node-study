@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view</title>
+</head>
+<body>
+    用户：<input type="text" id='user'>
+    密码：<input type="password" id='pass'>
+    <input type="button" id='btn' value="登录">
+</body>
+<script src="./jquery-1.7.2.min.js"></script>
+<script>
+    $(function(){
+        $('#btn').on('click',function(){
+            var user = $('#user').val();
+            var pass = $('#pass').val();
+            $.ajax({
+                url:'/login',
+                type:'post',
+                data:{user:user,pass:pass},
+                success:function(result){
+                    console.log(result,typeof result,JSON.parse(result));
+                }
+            })
+        })
+    })
+</script>
+</html>

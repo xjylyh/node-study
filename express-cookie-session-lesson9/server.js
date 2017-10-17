@@ -23,6 +23,13 @@ server.use('/a.html',function(req,res){
         maxAge:7*24*3600*1000,
         signed:true
     })
+    console.log(req.cookies,req.signedCookies);
+    if(req.session['howmuch']==null){
+        req.session['howmuch'] = 1;
+    }else{
+        req.session['howmuch']++
+    }
+    console.log(req.session);
     res.send('ok');
     res.end();
 })

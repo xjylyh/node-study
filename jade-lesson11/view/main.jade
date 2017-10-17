@@ -1,0 +1,49 @@
+doctype
+html
+    head
+        meta(charset='utf-8')
+        title jade测试页面
+        style.
+            div{width:50px;height:50px;background-color:#ccc;color:#fff;font-size:18px;font-weight:bold;text-align:center;float:left;line-height:50px;margin:10px;}
+            div.last{clear:left;}
+    body
+        -var a=0;
+        while a<12
+            if a%4==0 && a!=0
+                div.last=a++
+            else
+                div=a++
+
+        div #{b+c}
+        |sssssss
+        div!=contents
+
+        -var s=1;
+        case s
+            when 0
+                div 00000000
+            when 1
+                div 11111111
+            when 2
+                div 22222222
+            default
+                '不存在的'
+//1.xxxx.
+//    ssss
+//sss会原样输出
+
+
+//2.标签后面空格可以直接写内容
+
+//3.js代码前面需要-，-只有一个即可
+
+//4.|代表后面内容原样输出
+
+//5.变量输出 #{}  也可以在想要输出的后面直接=变量  ex:div=变量
+
+//6.switch=>case   case=>when    同样有default
+
+//7.if xxxxxxxx
+//    content
+//  else
+//    content

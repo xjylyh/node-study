@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    <%=name%>
+    <%=json.arr[0].user+json.arr[0].pass%>
+    <%for(var i=0;i<json.arr.length;i++){%>
+        <div>用户名：<%=json.arr[i].user%></div>
+        <div>密码：<%=json.arr[i].pass%></div>
+    <%}%>
+    <%var str = '<div></div>'%>
+    <%-str%>
+
+    <div>
+        <%for(var i=0;i<5;i++){%>
+            <% include ./a.txt %>
+        <%}%>
+    </div>
+
+    <%if(type=='admin'){%>
+        <%include ../style/admin.css%>
+    <%}else{%>
+        <%include ../style/user.css%>
+    <%}%>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>context</title>
+    <%include ../script.ejs%>
+</head>
+<body>
+    <% var atcdata = JSON.parse(atcdata)[0] %>
+    <section class="author_msg">
+        <img src="<%=atcdata.author_src%>" alt="">
+        <%=atcdata.author%>
+        <span class="change_date"><%=new Date(atcdata.post_time)%></span>
+    </section>
+    <section class="context_main">
+        <h3><%=atcdata.title%></h3>
+        <%-atcdata.content%>
+        <div>点赞：<%=atcdata.n_like%></div>
+    </section>
+</body>
+<script>
+    $(function(){
+        $('.change_date').text(new Date($('.change_date').text()).format("yyyy-M-d h:m:s"))
+    })
+</script>
+</html>

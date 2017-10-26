@@ -4,7 +4,9 @@ const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const multer = require('multer');
 const consolidate = require('consolidate');
-const mysql = require('mysql');
+const loginRouter = require('./login.router.js');
+const listRouter = require('./list.router.js');
+const contextRouter = require('./context.router.js')
 
 var server = express();
 var fileObj = multer({dest:'./files/'});
@@ -23,10 +25,13 @@ server.use(fileObj.any());
 
 //处理模版文件
 server.set('view engine','html');
-server.set('views','./views');
+server.set('views','./views/template/');
 server.engine('html',consolidate.ejs);
 
-//用户请求
-server.use('/login.html',(req,res)=>{
-    res.render('login.ejs');
-})
+//router
+server.use('/login',loginRouter);
+server.use('/list',listRouter);
+server.use('/context',contextRouter);
+
+
+

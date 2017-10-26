@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>列表</title>
+    <%include ../style.ejs%>
+    <link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+</head>
+<body>
+    <%var pase = JSON.parse(banner)%>
+    <%var news = JSON.parse(article)%>
+    <section class="list_banner">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <%for(var i=0;i<pase.length;i++){%>
+            <div class="swiper-slide relv">
+                <img src="<%=pase[i].src%>" alt="">
+                <div class="titles_box">
+                    <div class="titles_box_title"><%=pase[i].title%></div>
+                    <div class="titles_box_titletwo"><%=pase[i].sub_title%></div>
+                </div>
+            </div>
+            <%}%>
+          </div>
+        </div>
+    </section><!-- 
+    <a style="width:10rem;height:10rem;" href="openIE:http://localhost:3000/login.html">gotoie</a> -->
+    <section class="list_all">
+        <div class="list_all_title">新闻列表</div>
+        <div class="list_main_box">
+            <%for(var i=0;i<news.length;i++){%>
+            <div class="list_main" data-id="<%=news[i].ID%>">
+                <div class="list_main_title"><%=news[i].title%></div>
+                <div class="list_main_summary"><%=news[i].summary%></div>
+            </div>
+            <%}%>
+        </div>
+        
+    </section>
+</body>
+<%include ../script.ejs%>
+<script src="../pub/swiper.min.js"></script>
+<script src="../js/list.js"></script>
+</html>

@@ -33,7 +33,7 @@ server.use('/login',loginRouter);
 server.use('/list',listRouter);
 server.use('/context',contextRouter);
 /*SELECT name,SUM(price) FROM 表 GROUP BY name ORDER BY SUM(price) DESC*/
-/*查询表中用户，以及购买所有商品的价格总和并合并而且按照降序排列*/
+/*查询表中用户，以及购买所有商品的价格总和并按照价格合并而且按照降序排列*/
 
 
 
